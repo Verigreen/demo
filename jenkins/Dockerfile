@@ -1,4 +1,4 @@
-FROM jonathan0119/jenkins-tomcat-nginx
+FROM verigreen/jenkins:latest
 MAINTAINER Ricardo Quintana http://github.com/rqc
 
 RUN apt-get update && apt-get install -y \
