@@ -1,4 +1,4 @@
-FROM verigreen/jenkins:latest
+FROM verigreen/jenkins:jenkins_v1.596.2-tomcat_v7.0.55-nginx_v1.7.12
 MAINTAINER Ricardo Quintana http://github.com/rqc
 
 RUN apt-get update && apt-get install -y \
