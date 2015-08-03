@@ -1,0 +1,62 @@
+---
+# GitLab administrator
+admin:
+   username: admin    
+   password: verigreen 
+   name: Gitlab Admin
+   email: admin@yourcompany.com
+
+# GitLab regular users(for pushing code)
+users:
+   - username: verigreen_user
+     password: verigreen
+     name: Original Verigreen User
+     email: verigreen_user@yourcompany.com
+     ssh_key: user1_id_rsa.pub
+
+   - username: torres
+     password: verigreen
+     name: John Towers
+     email: verigreen_user1@yourcompany.com
+     #ssh_key: user1_id_rsa.pub
+
+   - username: ned
+     password: verigreen
+     name: Eddard Stark
+     email: verigreen_user2@yourcompany.com
+     #ssh_key: user2_id_rsa.pub
+
+   - username: dog2
+     password: verigreen
+     name: Sandor Clegane
+     email: verigreen_user3@yourcompany.com
+     #ssh_key: user3_id_rsa.pub
+
+   - username: rams
+     password: verigreen
+     name: Ramsey Bolton
+     email: verigreen_user4@yourcompany.com
+     #ssh_key: user4_id_rsa.pub
+
+# Project and repository information
+projects:
+   - key: vg_test_project_1
+     name: Verigreen Test Project
+     desc: Project created to demonstrate Verigreen + Gitlab integration.
+     owner: verigreen_user
+     team_members:
+        - username: ned
+          access: MASTER
+
+        - username: dog2
+          access: DEVELOPER
+
+        - username: torres
+          access: REPORTER
+
+        - username: rams
+          access: GUEST
+
+# Hook properties
+collector_address: "http://verigreen:8085/rest"
+...

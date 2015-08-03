@@ -1,0 +1,3 @@
+Host gitlab
+User verigreen_user
+IdentityFile ~/.ssh/vg_demo

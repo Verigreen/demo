@@ -1,0 +1,62 @@
+verigreen:
+  hostname: verigreen
+  build: verigreen/
+  environment:
+    - JENKINS_CONTAINER_HOSTNAME=jenkins
+    - GITLAB_CONTAINER_HOSTNAME=gitlab
+  ports:
+    - "8085:8080"
+  volumes:
+    # TODO: consider adding a `:ro` suffix for *read-only* access.
+    # Map volume to verigreen configuration files.
+    - $HOME/.vg/vg/config:/vg
+    # Map volume to `ssh` configuration for the remote repository.
+    - $HOME/.vg/vg/ssh:/ssh
+    # - $HOME/.vg/vg/cacheloader:/vg/cacheloader
+    # Map volume to the *local* repository. If there is an existing repository
+    # in the host directory, then it will use that, if not, it will try to clone from remote.
+    # - $HOME/.vg/data/repo:/repo
+
+gitlab:
+   hostname: gitlab
+   build: gitlab/
+   user: root
+   environment:
+      - VERIGREEN_CONTAINER_HOSTNAME=verigreen
+      - GITLAB_PORT=10080
+      - GITLAB_SSH_PORT=10022
+   links:
+      - "postgres:postgresql"
+      - "redis:redisio"
+   ports:
+      - "10080:80"
+      - "10022:22"
+   volumes:
+      - $HOME/.vg/gitlab:/var/gitlab/config      
+      - $HOME/.vg/data/gitlab:/home/git/data
+
+postgres:
+  hostname: postgresql-gitlab
+  image: sameersbn/postgresql:9.4
+  environment:
+     - DB_NAME=gitlabhq_production
+     - DB_USER=gitlab
+     - DB_PASS=password
+
+redis:
+   hostname: redis-gitlab
+   image: sameersbn/redis:latest
+
+jenkins:
+  hostname: jenkins
+  build: jenkins/
+  ports:
+    - "8086:8081"
+  volumes:
+    - $HOME/.vg/jenkins/config.yml:/config.yml
+    - $HOME/.vg/jenkins/demo-jobs.groovy:/jobs.groovy
+    # TODO: include back the jenkins_home after bug in jenkins image is fixed.
+    # - $HOME/.vg/data/jenkins:/jenkins_home
+  environment:
+    - ADMIN_PASSWORD=verigreen
+    - GITLAB_CONTAINER_HOSTNAME=gitlab

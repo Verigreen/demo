@@ -1,0 +1,3 @@
+repository:
+  # Enter here git remote repository url used in git clone (e.g. ssh://<domain>:<port>/path/to/repo.git)
+   remote_url: "ssh://git@gitlab:10022/verigreen_user/verigreen-test-project.git"

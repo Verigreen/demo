@@ -1,0 +1,55 @@
+##################################
+# Use Jenkins' own user database #
+##################################
+hudson:
+  disabledAdministrativeMonitors: ''
+  version: '1.0'
+  numExecutors: '2'
+  mode: 'NORMAL'
+  useSecurity: 'true'
+  authorizationStrategy:
+    attributes: 'login-authorization'
+  securityRealm:
+    attributes: 'database-authentication'
+    disableSignup: 'true'
+    enableCaptcha: 'false'
+  disableRememberMe: 'false'
+  projectNamingStrategy:
+    attributes:
+    - 'class=jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy'
+  workspaceDir: '${ITEM_ROOTDIR}/workspace'
+  buildsDir: '${ITEM_ROOTDIR}/builds'
+  markupFormatter:
+    attributes:
+    - 'class=hudson.markup.EscapedMarkupFormatter'
+  jdks: ''
+  viewsTabBar:
+    attributes:
+    - 'class=hudson.views.DefaultViewsTabBar'
+  myViewsTabBar:
+    attributes:
+    - 'class=hudson.views.DefaultMyViewsTabBar'
+  clouds: ''
+  slaves: ''
+  scmCheckoutRetryCount: '0'
+  views:
+    hudson.model.AllView:
+      owner:
+        attributes:
+        - 'class=hudson'
+        - 'reference=../../..'
+      name: 'All'
+      filterExecutors: 'false'
+      filterQueue: 'false'
+      properties:
+        attributes:
+        - 'class="hudson.model.View$PropertyList'
+  primaryView: 'All'
+  slaveAgentPort: '0'
+  label: ''
+  nodeProperties: ''
+  globalNodeProperties: ''
+---
+users:
+  unhashed:
+    - 'verigreen_user:verigreen'

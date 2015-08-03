@@ -1,0 +1,6 @@
+# Added by Verigreen demo bootstrap script
+#-------------------------------------------------
+Host localhost
+User verigreen_user
+IdentityFile ~/.ssh/vg_demo
+#-------------------------------------------------
