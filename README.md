@@ -90,15 +90,8 @@ If you want to restart just one container that you stopped, you may do so by usi
 ### Cleanup Containers
 
 ```
-# Soft cleanup: removes containers, doesn't remove volumes
-sudo docker-compose -f demo.yml rm
-```
-
-or
-
-```
-# Hard cleanup: removes containers and volumes
-sudo docker rm -fv $(sudo docker ps -aq)
+# from the top of the verigreen/demo project run:
+./reset_environment.sh
 ```
 
 
