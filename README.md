@@ -25,6 +25,28 @@ Then from the command line, run the following command to build the images in you
 sudo docker-compose -f demo.yml build
 ```
 
+If you are building the demo behind your *corporate proxy* you will need to add your proxy settings to each of the docker files in the project *before your build*. This is to allow the statements in the docker files that download/install packages from the internet to work correctly. The lines should look something like this:
+
+```
+...
+MAINTAINER Giovanni Matos http://github.com/gmatoshp
+
+ENV HTTP_PROXY="http://<proxy-url>:<port>/" \
+    HTTPS_PROXY="http://<proxy-url>:<port>/" \
+    NO_PROXY="127.0.0.1, localhost, ..."
+
+ENV VG_HOOK_HOME="/var/vg_hook/home" \
+    VG_HOOK="/var/vg_hook/config" \
+    VERIGREEN_VERSION="2.0.1" \
+    ...
+```
+
+Add the list of internal ips/hostnames that you would like to access from your container to the `NO_PROXY` environment variable. The files that you need to modify are the following:
+
+- `gitlab/Dockerfile`
+- `jenkins/Dockerfile`
+- `verigreen/Dockerfile`
+
 ### Bootstrap Assets
 
 From the linux command line execute the following script:
