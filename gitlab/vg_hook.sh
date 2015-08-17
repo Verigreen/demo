@@ -6,5 +6,4 @@ source /home/git/gitlab-shell/hooks/set_env.sh
 REPO="Dummy" #dummy value for now
 read LINE;
 echo $LINE >> $VG_HOOK_HOME/vg-git-hook.log
-echo "java -jar "$VG_HOOK_HOME/git-hook.jar" $REPO $LINE"
 java -jar "$VG_HOOK_HOME/git-hook.jar" $REPO $LINE
