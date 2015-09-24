@@ -31,11 +31,6 @@ function create_assets_dir {
 	mkdir -p "$assets_dir"
 }
 
-function bootstrap_consul {
-	cp -Ri assets/consul $assets_dir
-	echo "Finished bootstrapping for Consul!"
-}
-
 function bootstrap_vg {
 	cp -Ri assets/vg $assets_dir
 	echo "Finished bootstrapping for Verigreen!"
@@ -65,11 +60,10 @@ function cleanup_data {
 }
 
 function cleanup_assets {
-	rm -rf $assets_dir/consul
 	rm -rf $assets_dir/jenkins
 	rm -rf $assets_dir/gitlab
 	rm -rf $assets_dir/vg
-	echo "Finished cleaning up assets for GitLab, Verigreen, Jenkins, and Consul!"
+	echo "Finished cleaning up assets for GitLab, Verigreen, and Jenkins"
 }
 
 function cleanup {
@@ -101,11 +95,7 @@ case $1 in
 	gitlab)
         create_assets_dir
         bootstrap_gitlab
-    ;;    
-	consul)
-		create_assets_dir
-		bootstrap_consul
-	;;	
+    ;;
 	data)
 		create_assets_dir
 		bootstrap_data
@@ -126,7 +116,6 @@ case $1 in
 		create_assets_dir
 		bootstrap_vg
 		bootstrap_jenkins
-		bootstrap_consul
 		bootstrap_data
 		bootstrap_dot_ssh
 		bootstrap_gitlab

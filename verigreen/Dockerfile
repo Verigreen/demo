@@ -1,4 +1,4 @@
-FROM verigreen/vg-collector:2.0.1
+FROM verigreen/vg-collector:2.5.1
 MAINTAINER Ricardo Quintana http://github.com/rqc
 
 RUN apt-get update && apt-get install -y \
