@@ -19,8 +19,9 @@ RUN mkdir -p $VG_HOOK && \
 
     curl -sSL https://github.com/Verigreen/verigreen/releases/download/verigreen-$VERIGREEN_VERSION/verigreen-git-hook.tar.gz -o /tmp/verigreen-git-hook.tar.gz && \
     cd /tmp && \
-    tar -xzvf verigreen-git-hook.tar.gz && \
-    cp git-hook/verigreen-git-hook/* $VG_HOOK_HOME
+    tar -xzvf verigreen-git-hook.tar.gz -C /tmp/git-hook && \
+    chmod +x /tmp/git-hook/* && \
+    cp git-hook/* $VG_HOOK_HOME
 
 ADD vg_hook.sh vg_hook.sh
 
