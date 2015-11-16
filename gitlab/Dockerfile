@@ -3,7 +3,7 @@ MAINTAINER Giovanni Matos http://github.com/gmatoshp
 
 ENV VG_HOOK_HOME="/var/vg_hook/home" \
     VG_HOOK="/var/vg_hook/config" \
-    VERIGREEN_VERSION="2.0.1" \
+    VERIGREEN_VERSION="2.5.5" \
     VG_HOOK_EXE="vg_hook.sh" \
     GITLAB_CONFIG_PATH="/var/gitlab/config"
  

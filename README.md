@@ -37,7 +37,7 @@ ENV HTTP_PROXY="http://<proxy-url>:<port>/" \
 
 ENV VG_HOOK_HOME="/var/vg_hook/home" \
     VG_HOOK="/var/vg_hook/config" \
-    VERIGREEN_VERSION="2.0.1" \
+    VERIGREEN_VERSION="2.5.5" \
     ...
 ```
 
