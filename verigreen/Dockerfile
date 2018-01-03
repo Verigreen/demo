@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
 										&& \
 										apt-get clean
 
-WORKDIR $VG_ROOT
+WORKDIR $APP_DIR
 
 ADD pre-entrypoint.sh pre-entrypoint.sh
 ADD update_hosts.sh update_hosts.sh
